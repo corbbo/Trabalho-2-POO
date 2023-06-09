@@ -7,7 +7,9 @@ como também informações sobre uma partida qualquer (partida de exemplo inclú
 integrantes da Copa e outro sobre os eventos (jogador escalado, gol, etc) da partida lida.
 
 //-------------------------------------
+
 A minha implementação, vulgo o que faltava para terminar o programa, foi feita nos arquivos aqui, entre essas duas barras.
+
 //-------------------------------------
 
 ----------------------------------------------------------------------------------------------------------------
@@ -19,5 +21,7 @@ as well as info on a given match (example match uploaded as "partida.csv"). The 
 and gives another on the events (player enters the field, player is subbed out/in, player committed a foul, player scored, etc) of the match that was read in.
 
 //------------------------------------
+
 My implementation, in other words what was missing for the program to work, was made in the files here, between these two commented out bars.
+
 //------------------------------------
