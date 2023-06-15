@@ -2,6 +2,7 @@
 
 #include "data.hpp"
 #include <sstream>
+#include <iomanip>
 
 
 vector<string> Data::splitCSV(string linhaCSV, char separador) {
@@ -91,7 +92,7 @@ bool Data::operator>=(const Data &d) const {
 }
 
 ostream &operator<<(ostream &os, const Data &d) {
-    os << d.obtemDia() << "/" << d.obtemMes() << "/" << d.obtemAno();
+    os << setw(2) << setfill('0') << d.obtemDia() << "/" << setw(2) << setfill('0') << d.obtemMes() << "/" << d.obtemAno();
     return os;
 }
 

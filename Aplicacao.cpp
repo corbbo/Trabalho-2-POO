@@ -1,5 +1,5 @@
 // Aplicacao.cpp (Roland Teodorowitsch; 17 maio 2023)
-// Trabalho 2 de POO - Thiago Zilberknop (última atualização 09/06/2023)
+// Trabalho 2 de POO - Thiago Zilberknop (última atualização 15/06/2023)
 
 #include <iostream>
 #include <fstream>
@@ -141,11 +141,40 @@ void Aplicacao::mostraPartida() {
 void Aplicacao::mostraRelatorio() {
    if (partida == nullptr) cout << "Nenhuma partida carregada" << endl;
    else {
-      int size = partida->obtemNumEventos();
-      for (int i = 0; i < size; i++) {
-         Jogador* player = partida->obtemEvento(i)->obtemJogador();
-         cout << player->str() << " ===> " << partida->obtemEvento(i)->obtemMinuto() << " minuto(s)" << endl;
+      Pais* timeA = partida->obtemSelecao1();
+      Pais* timeB = partida->obtemSelecao2();
+      for (int i = 0; i < 26; i++) {
+         Jogador* j = obtemJogador(timeA->obtemSigla(), i);
+         int start = -1, finish = -1;
+         for (int k = 0; k < partida->obtemNumEventos(); k++) {
+            Evento* e = partida->obtemEvento(k);
+            if (e->obtemEvento() == ENTRADA && e->obtemJogador() == j) {
+               start = e->obtemMinuto();
+            }
+            if (e->obtemEvento() == SAIDA && e->obtemJogador() == j) {
+               finish = e->obtemMinuto();
+               break;
+            }
+         }
+         if (finish == -1) finish = 98;
+         if (start != -1) cout << j->str() << " ==> " << finish - start << " minutos" << endl;
       }
+      for (int i = 0; i < 26; i++) {
+         Jogador* j = obtemJogador(timeB->obtemSigla(), i);
+         int start = -1, finish = -1;
+         for (int k = 0; k < partida->obtemNumEventos(); k++) {
+            Evento* e = partida->obtemEvento(k);
+            if (e->obtemEvento() == ENTRADA && e->obtemJogador() == j) {
+               start = e->obtemMinuto();
+            }
+            if (e->obtemEvento() == SAIDA && e->obtemJogador() == j) {
+               finish = e->obtemMinuto();
+               break;
+            }
+         }
+         if (finish == -1) finish = 98;
+         if (start != -1) cout << j->str() << " ==> " << finish - start << " minutos" << endl;
+      } 
    }
 }
 
